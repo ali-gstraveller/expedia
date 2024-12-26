@@ -13,37 +13,112 @@
 
     <div class="top-nav">
 
-        <img style="flex-grow: 1; margin: -0.5%; " src="images/logo.svg" height="28" alt="">
+        <img class="logo" src="images/logo.svg" height="28" alt="">
 
         <div class="drop-down" id="drop-down" >
-
-            <a style="flex-grow: 1"    onclick="toggleDisplay()" class="s-t" href="javascript:void(0)">Shop travel <i class="fa-solid fa-chevron-down"></i> </a>
+            <a onclick="toggleDisplay()" class="shop-travel-btn" href="javascript:void(0)">Shop travel <i class="fa-solid fa-chevron-down"></i> </a>
             <div id="drop-down-content"  class="drop-down-content">
-                <a href=""> <i style="font-size: 20px;padding-right: 10px;" class="fa-solid fa-building"></i> Stays</a>
-                <a href=""><i style="font-size: 20px;padding-right: 4px" class="fa-solid fa-plane"></i> Flights</a>
-                <a href=""><i style="font-size: 20px;padding-right: 10px;" class="fa-solid fa-car"></i> Cars</a>
-                <a href=""> <i class="fa-solid fa-cube" style="font-size: 20px;padding-right: 10px;"></i> Packages</a>
-                <a href=""> <i class="fa-solid fa-list-check" style="font-size: 20px;padding-right: 10px;"></i> Things to do</a>
-                <a href=""> <i class="fa-solid fa-ship" style="font-size: 20px;padding-right: 10px;"></i> Cruises</a>
+                <a href=""> <i class="fa-solid fa-building"></i> Stays</a>
+                <a href=""> <i class="fa-solid fa-plane"></i> Flights</a>
+                <a href=""> <i class="fa-solid fa-car"></i> Cars</a>
+                <a href=""> <i class="fa-solid fa-cube" ></i> Packages</a>
+                <a href=""> <i class="fa-solid fa-list-check" ></i> Things to do</a>
+                <a href=""> <i class="fa-solid fa-ship" ></i> Cruises</a>
             </div>
         </div>
-        <div style="flex-grow: 8" class="menu">
-            <a href="" class="get-app"
-                style="border: 1px solid silver;padding:5px;border-radius: 25px;text-decoration: none;"> <i
-                    style="color: #1668e3;" class="fa-solid fa-download"></i> Get the app </a>
-            <a class="language"  href=""> <i class="fa-solid fa-globe"></i> English </a>
-            <a class="property" href="">List your property</a>
-            <a class="support" href="">Support </a>
-            <a class="trip" href="">Trips</a>
-            <a  class="message" href=""><i class="fa-solid fa-message"></i></a>
-            <a href="" style="margin-right: 30px "><i style="border:1px solid black;border-radius: 15px;padding: 5px;"
-                    class="fa-solid fa-user"></i>  </a>
+        <div class="menu" id="menu">
+            <a href="javascript:void(0)" id="get-app" class="get-app"> 
+                <i  class="fa-solid fa-download"></i> 
+                Get the app 
+            </a>
+            <a class="language" id="language" href=""> 
+                <i class="fa-solid fa-globe"></i> 
+                English 
+            </a>
+            <a class="property" id="property" href="">
+                List your property
+            </a>
+            <a class="support" id="support" href="">
+                Support 
+            </a>
+            <a class="trip" id="trip" href="">
+                Trips
+            </a>
+            <a  id="message" class="message" href="">
+                <i class="fa-solid fa-message"></i>
+            </a>
+            <a href="" id="profile" class="a-profile" >
+                <i class="fa-solid fa-user">
+                </i>  
+            </a>
+            <div class="menu-drop-down" id="drop-down-menu">
+
+            </div>
         </div>
 
     </div>
     </div>
 
     <script>
+
+var container = document.getElementById('menu');
+var get_app = document.getElementById('get-app');
+var language = document.getElementById('language');
+var property = document.getElementById('property');
+var support = document.getElementById('support');
+var trip = document.getElementById('trip');
+var message = document.getElementById('message');
+var profile = document.getElementById('profile');
+var drop_down_menu = document.getElementById('drop-down-menu');
+const lineBreak = document.createElement('br');
+
+
+// console.log('window.innerWidth=>',window.innerWidth)
+
+window.addEventListener('resize', ()=>{
+
+    console.log("window width changed",window.innerWidth);
+
+    if(window.innerWidth <= 891){
+        container.style.display = 'block';
+        drop_down_menu.style.display = 'block';
+        language.style.display ='block';
+        support.style.display ='block';
+        property.style.display ='block';
+        profile.parentNode.insertBefore(lineBreak, profile.nextSibling);
+        drop_down_menu.appendChild(language);
+        drop_down_menu.appendChild(support);
+        drop_down_menu.appendChild(property);
+        container.style.marginTop= '50px'
+        drop_down_menu.style.float = 'right';
+        drop_down_menu.style.border = '1px solid black';
+        drop_down_menu.style.width = '300px';
+        // drop_down_menu.style.height = '300px';
+        // drop_down_menu.style.width = '500px';
+        // container.insertBefore(language,get_app);
+    }
+
+    else if(window.innerWidth >= 891){
+        // container.insertBefore(get_app,language);
+        drop_down_menu.style.display = 'inline';
+        language.style.display ='inline';
+        support.style.display ='inline';
+        property.style.display ='inline';
+        // container.appendChild(get_app);
+        container.insertBefore(language,trip);
+        container.insertBefore(property,trip);
+        container.insertBefore(support,trip);
+        container.style.marginTop= '0px';
+        // container.appendChild
+
+
+        drop_down_menu.style.border = 'none';
+        drop_down_menu.style.width = '0px';
+        drop_down_menu.style.width = '0px';
+
+    }
+
+}  )
 
         var dropDownToggle = false;
 
@@ -53,19 +128,18 @@
 
                 document.getElementById('drop-down').style.marginTop = "0px";
                 document.getElementById('drop-down-content').classList.toggle('visible');
-                dropDownToggle = false;
+                dropDownToggle = false ;
             }
-            else   if (!dropDownToggle) {
+            else if (!dropDownToggle) {
 
                 document.getElementById('drop-down-content').classList.toggle('visible');
-                document.getElementById('drop-down').style.marginTop = "470px";
+                document.getElementById('drop-down').style.marginTop = "350px";
+                document.getElementById('drop-down').style.marginLeft = "30px";
                 document.getElementById('drop-down-content').style.marginLeft = '30px'
-                dropDownToggle = true                
+                dropDownToggle = true ;               
             }
 
         }
-
-
 
     </script>
 

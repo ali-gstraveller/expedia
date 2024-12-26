@@ -5,7 +5,7 @@
 
 @font-face {
     font-family: CentraNo2-Medium;
-    src: url(CentraNo2-Medium.otf);
+    src: url(fonts/CentraNo2-Medium.otf);
 }
 
 .top-nav{
@@ -27,35 +27,53 @@
     color: #1668e3;
 }
 
-.get-app:hover{
-    background-color: #ebf2fc ;
-    color: black !important;
-    border: 1px solid  #ebf2fc ;
+ .fa-building{
+    font-size: 20px ;
+    padding-right: 10px ;
+}
+.fa-plane{
+    font-size: 20px;
+    padding-right: 4px
+}
+.fa-car{
+    font-size: 20px;
+    padding-right: 10px
+}
+.fa-cube{
+    font-size: 20px;
+    padding-right: 10px;
+}
+.fa-list-check{
+    font-size: 20px;
+    padding-right: 10px;
+}
+.fa-ship{
+    font-size: 20px;
+    padding-right: 10px
 }
 
-.menu {
-   
-    text-align: right;
-
-}
-
-img{
+.logo{
     padding: 5px;
+    flex-grow: 1; 
+    margin: -0.5%;
 
 }
 
-a{
-    color: black;
+/* left navigation option */
+
+.shop-travel-btn{
     text-decoration: none;
-    margin-left: 30px;
+    flex-grow: 1;
 }
 
 .drop-down {
+    
     display: block;
 
 }
 
 .drop-down-content{
+
     display: none;
     box-shadow: 0px 1px 4px 0px ;
     background-color: white;
@@ -67,10 +85,13 @@ a{
 
     width: 300px ;
     display: block;
-    height: 50px;
-    padding-top: 25px;
+    height: 30px;
+    padding-top: 15px;
+    padding-bottom: 10px;
     padding-left: 30px;
     margin-left: 0px;
+    text-decoration: none;
+
 }
 
 .drop-down-content a:hover{
@@ -80,25 +101,79 @@ a{
 
 }
 
+/* get app button */
+
+.get-app{
+    border: 1px solid silver;
+    padding:5px;
+    border-radius: 25px;
+    text-decoration: none;
+
+}
+
+.get-app:hover{
+    background-color: #ebf2fc ;
+    color: black !important;
+    border: 1px solid  #ebf2fc ;
+}
+
+.get-app i{
+    color: #1668e3
+}
+
+/* right navigation  */
+
+.menu {
+    text-align: right;
+    flex-grow: 8;
+    border: 1px solid black;
+    /* display: block; */
+}
+
+.menu a{
+    color: black;
+    text-decoration: none;
+    margin-left: 30px;
+}
+
+.a-profile{
+    margin-right: 30px
+}
+
+.a-profile i {
+    border:1px solid black;
+    border-radius: 15px;
+    padding: 5px;
+}
+
 .visible{
     display: block;
 }
 
 @media (max-width:1000px){
+
+    .get-app{
+        /* display: none; */
+        margin-top: 500px;
+    }
+
     .language{
-        display: none;
+        /* display: none; */
+        /* margin-top: 50px; */
     }
 
     .property{
-        display: none;
+        /* display: none; */
     }
+
     .support{
-        display: none;
+        /* display: none; */
     }
 
 }
 
 @media (max-width:600px){
+    
     .message{
         display: none;
     }
@@ -106,10 +181,10 @@ a{
     .trip{
         display: none;
     }
+
     .drop-down{
         display: none;
     }
-
 
 }
 
