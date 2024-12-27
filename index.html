@@ -47,7 +47,7 @@
             <a  id="message" class="message" href="">
                 <i class="fa-solid fa-message"></i>
             </a>
-            <a href="" id="profile" class="a-profile" >
+            <a href="javascript:void(0)"  onclick="toggleAccount()" id="profile" class="a-profile" >
                 <i class="fa-solid fa-user">
                 </i>  
             </a>
@@ -71,6 +71,7 @@ var message = document.getElementById('message');
 var profile = document.getElementById('profile');
 var drop_down_menu = document.getElementById('drop-down-menu');
 const lineBreak = document.createElement('br');
+var profile_drop_down_toggle = false; 
 
 
 // console.log('window.innerWidth=>',window.innerWidth)
@@ -82,20 +83,38 @@ window.addEventListener('resize', ()=>{
     if(window.innerWidth <= 891){
         container.style.display = 'block';
         drop_down_menu.style.display = 'block';
+        drop_down_menu.style.display = 'none';
         language.style.display ='block';
         support.style.display ='block';
         property.style.display ='block';
         profile.parentNode.insertBefore(lineBreak, profile.nextSibling);
-        drop_down_menu.appendChild(language);
-        drop_down_menu.appendChild(support);
-        drop_down_menu.appendChild(property);
-        container.style.marginTop= '50px'
+        drop_down_menu.appendChild(language) ;
+        drop_down_menu.appendChild(support) ;
+        drop_down_menu.appendChild(property) ;
+        container.style.marginTop= '10px';
         drop_down_menu.style.float = 'right';
-        drop_down_menu.style.border = '1px solid black';
         drop_down_menu.style.width = '300px';
-        // drop_down_menu.style.height = '300px';
-        // drop_down_menu.style.width = '500px';
-        // container.insertBefore(language,get_app);
+        if ( window.innerWidth <= 600 ){
+            trip.style.display = 'block' ;
+            message.style.display = 'block' ;
+            message.textContent = "Inbox"
+            drop_down_menu.appendChild(message)
+            drop_down_menu.appendChild(trip);
+            
+        }
+        else if (window.innerWidth >= 600 && window.innerWidth <= 890 ){
+            container.appendChild(trip);
+            container.appendChild(message) ;
+            container.insertBefore(message,profile) ;
+            // container.style.border = '1px solid black' ;
+            container.insertBefore(trip,message)
+            trip.style.display = 'inline' ;
+            message.style.display = 'inline' ;
+             var wow=  profile.nextSibling;
+             wow.remove()
+
+        }
+
     }
 
     else if(window.innerWidth >= 891){
@@ -110,8 +129,6 @@ window.addEventListener('resize', ()=>{
         container.insertBefore(support,trip);
         container.style.marginTop= '0px';
         // container.appendChild
-
-
         drop_down_menu.style.border = 'none';
         drop_down_menu.style.width = '0px';
         drop_down_menu.style.width = '0px';
@@ -140,6 +157,32 @@ window.addEventListener('resize', ()=>{
             }
 
         }
+
+        function toggleAccount(){
+
+            if (  window.innerWidth <= 891 &&  !profile_drop_down_toggle){
+            
+                drop_down_menu.style.display = 'block';
+                if (window.innerWidth <= 600){
+                    container.style.marginTop = '200px';
+                }
+                else{
+
+                    container.style.marginTop = '130px';
+                }
+                profile_drop_down_toggle = true ;
+            }
+
+            else{
+                
+                drop_down_menu.style.display = 'none';
+                container.style.marginTop = '10px';
+                profile_drop_down_toggle = false ;
+
+            }
+        
+        }
+
 
     </script>
 

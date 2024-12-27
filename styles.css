@@ -126,14 +126,14 @@
 .menu {
     text-align: right;
     flex-grow: 8;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     /* display: block; */
 }
 
 .menu a{
     color: black;
     text-decoration: none;
-    margin-left: 30px;
+    margin-left: 30px ;
 }
 
 .a-profile{
@@ -149,6 +149,26 @@
 .visible{
     display: block;
 }
+
+.menu-drop-down  {
+    /* padding: 10px; */
+    margin-top: 15px;
+    box-shadow: 0px 0px 1px  ;
+    background-color: white;
+}
+.menu-drop-down a{
+    padding: 10px;
+}
+.menu-drop-down a{
+    margin-left: 0px;
+    text-align: left;
+}
+
+.menu-drop-down a:hover {
+    background-color: #f5f3f2 ;
+    color: black;
+}
+
 
 @media (max-width:1000px){
 
@@ -169,7 +189,9 @@
     .support{
         /* display: none; */
     }
-
+    .menu {
+        margin-top: 100px;
+    }
 }
 
 @media (max-width:600px){
